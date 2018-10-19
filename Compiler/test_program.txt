@@ -1,0 +1,20 @@
+{ print square of 1 to 10 }
+
+program hello (input, output);
+Var
+	i, s:integer;
+
+function Square(x:integer): result integer;
+begin
+	Square := x * x 
+end
+
+begin
+	i := 1;
+	while i < 11 do
+		begin
+			s := Square(i);
+			write(s);
+			i := i + 1
+		end
+end.

@@ -1,0 +1,84 @@
+{ Fundamentals }
+
+{ Relops }
+<=<<>>>==<><><>
+
+{ ADDOP Scenarios }
+(1, 2, 3) + [4, 5, 6] + abc
+22 + 33
+foo + bar
+
+{ Punctuation, no ADDOPS here }
+*/,()[],+-
+
+{ Not part of the character set}
+{ # ! & ^ $ }
+
+{ Dots }
+end.
+...........
+.. 
+
+{ ID, Keywords and Friends  }
+validid123
+PROGRAM
+BEGIN
+END
+VAR
+FUNCTION
+PROCEDURE
+RESULT
+INTEGER
+REAL
+ARRAY
+OF
+NOT
+IF
+THEN
+ELSE
+WHILE
+DO
+DIV 
+MOD 
+AND
+OR
+ONE2THREE
+
+{ Not Friend }
+{ 123foo }
+
+{ One Short of Maximum }
+abcdefghijklmnopqrstuvwxyz123456{7}
+
+{ Colon & ASSIGNOP }
+::=:=:::==:
+
+{ INT AND REALCONSTANT }
+123456
+10.5e-22
+0.4545
+
+{ These are not constants }
+{
+0.5e.
+5.
+777goodmorning
+5.four321
+}
+
+{ And Beyond } 
+
+{ a math equation }
+{ 1 unary minus 1 *addop* }
+h := h * (-1) + 3;
+
+{ double doot }
+5..6..7..8...
+
+{ these are valid }
+44/-**+123+**XxXxX91(+) 
+987.654e+321
+
+{ bug fixes, examples should throw error }
+{ 22e+ }
+{ 88E8oooo }
