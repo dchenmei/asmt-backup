@@ -57,3 +57,6 @@ class Grammar:
 
     def is_non_term(self, label):
         return label in self.non_terms
+
+    def is_action(self, label):
+        return label and label[0] == '#' # not empty and starts with pound sign

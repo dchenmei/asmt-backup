@@ -20,3 +20,7 @@ class ParserError(CompilerError):
 class SymbolTableError(CompilerError):
     def __init__(self, message):
         super().__init__("Symbol Table Error: " + message)
+
+class SemanticActionError(CompilerError):
+    def __init__(self, message, line, character):
+        super().__init__("Semantic Action Error: " + message + " at line " + str(line) + ", character " + str(character))

@@ -1,6 +1,5 @@
 from lexer import Lexer
 from grammar import Grammar
-from semantic_action import SemanticAction
 from error import CompilerError
 
 class Parser:
@@ -9,10 +8,8 @@ class Parser:
         self.top = self.stack[-1]
         self.lexer = lexer
         self.token = self.lexer.next_token()
-        self.prev_token = None
         self.grammar = grammar
         self.step = 1
-        self.sem_action = SemanticAction()
 
     def dump_stack(self):
         print("Stack ::==>", list(reversed(self.stack)))
@@ -28,7 +25,6 @@ class Parser:
             self.top = self.stack[-1]
 
     def next_token(self):
-        self.prev_token = self.token
         self.token = self.lexer.next_token()
 
     def parse(self, debug = 0):
@@ -41,11 +37,6 @@ class Parser:
                 self.match(debug)
             elif self.grammar.is_non_term(self.top):
                 self.non_terminal(self.token, self.top, debug)
-            elif self.grammar.is_action(self.top):
-                print("ACTION TIME BABY")
-                # [1:] ignores pound sign but gets rest of the number
-                self.sem_action.execute(int(self.top[1:]), self.prev_token)
-                self.pop_stack()
             else:
                 self.no_match_error(self.token, self.top, self.token.line())
 
@@ -98,6 +89,6 @@ class Parser:
 
 if __name__ == '__main__':
     lexer = Lexer('test_program.txt')
-    grammar = Grammar("augmented_grammar.txt", "table.txt")
+    grammar = Grammar("grammar.txt", "table.txt")
     parser = Parser(lexer, grammar)
     parser.parse(1)
