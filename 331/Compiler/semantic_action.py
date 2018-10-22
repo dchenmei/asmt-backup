@@ -12,6 +12,7 @@ class SemanticAction:
         self.local_mem = 0
 
         # TODO: what is the capacity?
+        self.local_table = SymbolTable(100000)
         self.global_table = SymbolTable(100000)
 
     def execute(self, action_num, token):
@@ -24,19 +25,17 @@ class SemanticAction:
         elif action_num == 3:
             self.action_3()
         elif action_num == 4:
-            # TODO: how to check if it is a type?
-            self.stack.append(token)
-        elif action_num == 7:
-            # TODO: how to check if it is an integer identifier?
-            self.stack.append(token)
+            self.action_4(token);
         elif action_num == 6:
             self.is_array = True
+        elif action_num == 7:
+            self.action_7(token)
         elif action_num == 9:
             self.action_9()
         elif action_num == 13:
-            # TODO: check identifier type
-            self.stack.append(token)
+            self.action_13(token)
         else:
+            # TODO: in the future, when valid numbers are implemented, raise error
             print("Action number invalid or currently not supported.")
 
         print("ACTION", action_num, "TOKEN", token.type())
@@ -61,18 +60,29 @@ class SemanticAction:
                 # TODO : insert into local table
                 local_mem += mem_size
 
+    def action_4(self, token):
+        # TODO: how the heck do you check the type when you only have token and don't know what types are allowed
+        if False:
+            raise SemanticActionError("expected type", 0, 0)
+        else:
+            self.stack.append(token)
 
+    def action_7(self, token):
+        # Must be int constant
+        if token.type() == "INTCONSTANT":
+            self.stack.append(token)
+        else:
+            raise SemanticActionError("expected integer constant", 0, 0)
 
     def action_9(self):
-        # TODO: how do you know you will get exactly 3 well behaving from stack
+        # TODO: probably not likely and also check if the three it contains are identifiers
+        if self.stack.size() < 3
+            raise SemanticActionError("expected identifiers", 0, 0)
         id1 = self.stack.pop()
         id2 = self.stack.pop()
         id3 = self.stack.pop()
 
-        if not id1 or not id2 or not id3:
-            # TODO: add in actual line and character number
-            raise SemanticActionError("expected three identifiers", 0, 0)
-
+        # TODO: set all reversed to true
         io_entry1 = IODeviceEntry(id1)
         io_entry2 = IODeviceEntry(id2)
         procedure_entry = ProcedureEntry(id3, 0, None)
@@ -81,6 +91,12 @@ class SemanticAction:
         self.global_table.insert(id3.value(), procedure_entry)
 
         self.insert = False
+
+    def action_13(self, token):
+        if token.type() == "IDENTIFIER":
+            self.stack.append(token)
+        else:
+            raise SemanticActionError("expected identifier", 0, 0)
 
     def dump(self):
         print("Stack ::==>", list(reversed(self.stack)))

@@ -11,7 +11,7 @@ lexer.py:
 
 notes:
 - using a list as a stack as always in python tradition (maybe?)
-
+- only created separated functions for action numbers that require complicated routines (i.e. more than one line)
 addition:
 Lexer Fix
 - line 158-159, there should be a digit even after E+ or E- in a numerical constant
@@ -35,15 +35,13 @@ TODO:
 - backup old parser [done]
 - remember previous token [done]
 - modify parser so that it can regconize the augmented grammar [done]
-- actions 1 [done?]
-- actions 2 [done?]
-- actions 6 [done?]
-- actions 4 [half done]
-- actions 7 [sorta]
-- actions 13 [done?]
+- actions 4 [need to check type]
+- actions 7 [check that it is int constant we need]
+- actions 13 [check that identifier check works]
 - actions 9 [sorta]
 - actions 3 [lol]
 
+- should the local symbol table be flushed occassionally?
 - fix symbol table class to have reserved boolean (or maybe boolean for all and then override
   the booleans during subclass initialization
 - how to pass line number to semantic action error

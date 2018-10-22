@@ -1,0 +1,1217 @@
+>>-  1  -<<
+Stack ::==> ['<Goal>', 'ENDOFFILE']
+Popped <Goal> with token PROGRAM -> $ PUSH $   [ 65 ] <Goal> ::= ['<program>', 'ENDMARKER']
+
+>>-  2  -<<
+Stack ::==> ['<program>', 'ENDMARKER', 'ENDOFFILE']
+Popped <program> with token PROGRAM -> $ PUSH $   [ 1 ] <program> ::= ['PROGRAM', 'IDENTIFIER', '#13', 'LPAREN', '<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55']
+
+>>-  3  -<<
+Stack ::==> ['PROGRAM', 'IDENTIFIER', '#13', 'LPAREN', '<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped PROGRAM with token PROGRAM -> * MATCH *   {consume tokens}
+
+>>-  4  -<<
+Stack ::==> ['IDENTIFIER', '#13', 'LPAREN', '<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  5  -<<
+Stack ::==> ['#13', 'LPAREN', '<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  6  -<<
+Stack ::==> ['LPAREN', '<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped LPAREN with token LPAREN -> * MATCH *   {consume tokens}
+
+>>-  7  -<<
+Stack ::==> ['<identifier-list>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list> with token IDENTIFIER -> $ PUSH $   [ 2 ] <identifier-list> ::= ['IDENTIFIER', '#13', '<identifier-list-tail>']
+
+>>-  8  -<<
+Stack ::==> ['IDENTIFIER', '#13', '<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  9  -<<
+Stack ::==> ['#13', '<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  10  -<<
+Stack ::==> ['<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list-tail> with token COMMA -> $ PUSH $   [ 3 ] <identifier-list-tail> ::= ['COMMA', 'IDENTIFIER', '#13', '<identifier-list-tail>']
+
+>>-  11  -<<
+Stack ::==> ['COMMA', 'IDENTIFIER', '#13', '<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped COMMA with token COMMA -> * MATCH *   {consume tokens}
+
+>>-  12  -<<
+Stack ::==> ['IDENTIFIER', '#13', '<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  13  -<<
+Stack ::==> ['#13', '<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  14  -<<
+Stack ::==> ['<identifier-list-tail>', 'RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list-tail> with token RPAREN -> @ EPSILON @   [ 4 ] <identifier-list-tail> ::= @ EPSILON @
+
+>>-  15  -<<
+Stack ::==> ['RPAREN', '#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RPAREN with token RPAREN -> * MATCH *   {consume tokens}
+
+>>-  16  -<<
+Stack ::==> ['#9', 'SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 9 TOKEN RPAREN
+
+>>-  17  -<<
+Stack ::==> ['SEMICOLON', '<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  18  -<<
+Stack ::==> ['<declarations>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <declarations> with token VAR -> $ PUSH $   [ 5 ] <declarations> ::= ['VAR', '#1', '<declaration-list>', '#2']
+
+>>-  19  -<<
+Stack ::==> ['VAR', '#1', '<declaration-list>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped VAR with token VAR -> * MATCH *   {consume tokens}
+
+>>-  20  -<<
+Stack ::==> ['#1', '<declaration-list>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 1 TOKEN VAR
+
+>>-  21  -<<
+Stack ::==> ['<declaration-list>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <declaration-list> with token IDENTIFIER -> $ PUSH $   [ 7 ] <declaration-list> ::= ['<identifier-list>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>']
+
+>>-  22  -<<
+Stack ::==> ['<identifier-list>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list> with token IDENTIFIER -> $ PUSH $   [ 2 ] <identifier-list> ::= ['IDENTIFIER', '#13', '<identifier-list-tail>']
+
+>>-  23  -<<
+Stack ::==> ['IDENTIFIER', '#13', '<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  24  -<<
+Stack ::==> ['#13', '<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  25  -<<
+Stack ::==> ['<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list-tail> with token COMMA -> $ PUSH $   [ 3 ] <identifier-list-tail> ::= ['COMMA', 'IDENTIFIER', '#13', '<identifier-list-tail>']
+
+>>-  26  -<<
+Stack ::==> ['COMMA', 'IDENTIFIER', '#13', '<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped COMMA with token COMMA -> * MATCH *   {consume tokens}
+
+>>-  27  -<<
+Stack ::==> ['IDENTIFIER', '#13', '<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  28  -<<
+Stack ::==> ['#13', '<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  29  -<<
+Stack ::==> ['<identifier-list-tail>', 'COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list-tail> with token COLON -> @ EPSILON @   [ 4 ] <identifier-list-tail> ::= @ EPSILON @
+
+>>-  30  -<<
+Stack ::==> ['COLON', '<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped COLON with token COLON -> * MATCH *   {consume tokens}
+
+>>-  31  -<<
+Stack ::==> ['<type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <type> with token INTEGER -> $ PUSH $   [ 10 ] <type> ::= ['<standard-type>']
+
+>>-  32  -<<
+Stack ::==> ['<standard-type>', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <standard-type> with token INTEGER -> $ PUSH $   [ 12 ] <standard-type> ::= ['INTEGER', '#4']
+
+>>-  33  -<<
+Stack ::==> ['INTEGER', '#4', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTEGER with token INTEGER -> * MATCH *   {consume tokens}
+
+>>-  34  -<<
+Stack ::==> ['#4', '#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 4 TOKEN INTEGER
+
+>>-  35  -<<
+Stack ::==> ['#3', 'SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 3 TOKEN INTEGER
+
+>>-  36  -<<
+Stack ::==> ['SEMICOLON', '<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  37  -<<
+Stack ::==> ['<declaration-list-tail>', '#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <declaration-list-tail> with token FUNCTION -> @ EPSILON @   [ 9 ] <declaration-list-tail> ::= @ EPSILON @
+
+>>-  38  -<<
+Stack ::==> ['#2', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 2 TOKEN SEMICOLON
+
+>>-  39  -<<
+Stack ::==> ['<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <sub-declarations> with token FUNCTION -> $ PUSH $   [ 15 ] <sub-declarations> ::= ['<subprogram-declaration>', '<sub-declarations>']
+
+>>-  40  -<<
+Stack ::==> ['<subprogram-declaration>', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subprogram-declaration> with token FUNCTION -> $ PUSH $   [ 17 ] <subprogram-declaration> ::= ['#1', '<subprogram-head>', '<declarations>', '#5', '<compound-statement>', '#11']
+
+>>-  41  -<<
+Stack ::==> ['#1', '<subprogram-head>', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 1 TOKEN SEMICOLON
+
+>>-  42  -<<
+Stack ::==> ['<subprogram-head>', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subprogram-head> with token FUNCTION -> $ PUSH $   [ 18 ] <subprogram-head> ::= ['FUNCTION', 'IDENTIFIER', '#15', '<arguments>', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16']
+
+>>-  43  -<<
+Stack ::==> ['FUNCTION', 'IDENTIFIER', '#15', '<arguments>', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped FUNCTION with token FUNCTION -> * MATCH *   {consume tokens}
+
+>>-  44  -<<
+Stack ::==> ['IDENTIFIER', '#15', '<arguments>', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  45  -<<
+Stack ::==> ['#15', '<arguments>', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 15 TOKEN IDENTIFIER
+
+>>-  46  -<<
+Stack ::==> ['<arguments>', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <arguments> with token LPAREN -> $ PUSH $   [ 20 ] <arguments> ::= ['LPAREN', '#19', '<parameter-list>', 'RPAREN', '#20']
+
+>>-  47  -<<
+Stack ::==> ['LPAREN', '#19', '<parameter-list>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped LPAREN with token LPAREN -> * MATCH *   {consume tokens}
+
+>>-  48  -<<
+Stack ::==> ['#19', '<parameter-list>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 19 TOKEN LPAREN
+
+>>-  49  -<<
+Stack ::==> ['<parameter-list>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <parameter-list> with token IDENTIFIER -> $ PUSH $   [ 22 ] <parameter-list> ::= ['<identifier-list>', 'COLON', '<type>', '#21', '<parameter-list-tail>']
+
+>>-  50  -<<
+Stack ::==> ['<identifier-list>', 'COLON', '<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list> with token IDENTIFIER -> $ PUSH $   [ 2 ] <identifier-list> ::= ['IDENTIFIER', '#13', '<identifier-list-tail>']
+
+>>-  51  -<<
+Stack ::==> ['IDENTIFIER', '#13', '<identifier-list-tail>', 'COLON', '<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  52  -<<
+Stack ::==> ['#13', '<identifier-list-tail>', 'COLON', '<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 13 TOKEN IDENTIFIER
+
+>>-  53  -<<
+Stack ::==> ['<identifier-list-tail>', 'COLON', '<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <identifier-list-tail> with token COLON -> @ EPSILON @   [ 4 ] <identifier-list-tail> ::= @ EPSILON @
+
+>>-  54  -<<
+Stack ::==> ['COLON', '<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped COLON with token COLON -> * MATCH *   {consume tokens}
+
+>>-  55  -<<
+Stack ::==> ['<type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <type> with token INTEGER -> $ PUSH $   [ 10 ] <type> ::= ['<standard-type>']
+
+>>-  56  -<<
+Stack ::==> ['<standard-type>', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <standard-type> with token INTEGER -> $ PUSH $   [ 12 ] <standard-type> ::= ['INTEGER', '#4']
+
+>>-  57  -<<
+Stack ::==> ['INTEGER', '#4', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTEGER with token INTEGER -> * MATCH *   {consume tokens}
+
+>>-  58  -<<
+Stack ::==> ['#4', '#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 4 TOKEN INTEGER
+
+>>-  59  -<<
+Stack ::==> ['#21', '<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 21 TOKEN INTEGER
+
+>>-  60  -<<
+Stack ::==> ['<parameter-list-tail>', 'RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <parameter-list-tail> with token RPAREN -> @ EPSILON @   [ 24 ] <parameter-list-tail> ::= @ EPSILON @
+
+>>-  61  -<<
+Stack ::==> ['RPAREN', '#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RPAREN with token RPAREN -> * MATCH *   {consume tokens}
+
+>>-  62  -<<
+Stack ::==> ['#20', 'COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 20 TOKEN RPAREN
+
+>>-  63  -<<
+Stack ::==> ['COLON', 'RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped COLON with token COLON -> * MATCH *   {consume tokens}
+
+>>-  64  -<<
+Stack ::==> ['RESULT', '<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RESULT with token RESULT -> * MATCH *   {consume tokens}
+
+>>-  65  -<<
+Stack ::==> ['<standard-type>', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <standard-type> with token INTEGER -> $ PUSH $   [ 12 ] <standard-type> ::= ['INTEGER', '#4']
+
+>>-  66  -<<
+Stack ::==> ['INTEGER', '#4', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTEGER with token INTEGER -> * MATCH *   {consume tokens}
+
+>>-  67  -<<
+Stack ::==> ['#4', 'SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+ACTION 4 TOKEN INTEGER
+
+>>-  68  -<<
+Stack ::==> ['SEMICOLON', '#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  69  -<<
+Stack ::==> ['#16', '<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 16 TOKEN SEMICOLON
+
+>>-  70  -<<
+Stack ::==> ['<declarations>', '#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <declarations> with token BEGIN -> @ EPSILON @   [ 6 ] <declarations> ::= @ EPSILON @
+
+>>-  71  -<<
+Stack ::==> ['#5', '<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 5 TOKEN SEMICOLON
+
+>>-  72  -<<
+Stack ::==> ['<compound-statement>', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <compound-statement> with token BEGIN -> $ PUSH $   [ 25 ] <compound-statement> ::= ['BEGIN', '<statement-list>', 'END']
+
+>>-  73  -<<
+Stack ::==> ['BEGIN', '<statement-list>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped BEGIN with token BEGIN -> * MATCH *   {consume tokens}
+
+>>-  74  -<<
+Stack ::==> ['<statement-list>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list> with token IDENTIFIER -> $ PUSH $   [ 26 ] <statement-list> ::= ['<statement>', '<statement-list-tail>']
+
+>>-  75  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token IDENTIFIER -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  76  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token IDENTIFIER -> $ PUSH $   [ 34 ] <elementary-statement> ::= ['IDENTIFIER', '#30', '<es-tail>']
+
+>>-  77  -<<
+Stack ::==> ['IDENTIFIER', '#30', '<es-tail>', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  78  -<<
+Stack ::==> ['#30', '<es-tail>', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 30 TOKEN IDENTIFIER
+
+>>-  79  -<<
+Stack ::==> ['<es-tail>', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <es-tail> with token ASSIGNOP -> $ PUSH $   [ 36 ] <es-tail> ::= ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31']
+
+>>-  80  -<<
+Stack ::==> ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 53 TOKEN IDENTIFIER
+
+>>-  81  -<<
+Stack ::==> ['<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token ASSIGNOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  82  -<<
+Stack ::==> ['ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped ASSIGNOP with token ASSIGNOP -> * MATCH *   {consume tokens}
+
+>>-  83  -<<
+Stack ::==> ['<expression>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  84  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  85  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  86  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  87  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  88  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  89  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token MULOP -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  90  -<<
+Stack ::==> ['<subscript>', '#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token MULOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  91  -<<
+Stack ::==> ['#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  92  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token MULOP -> $ PUSH $   [ 53 ] <term-tail> ::= ['MULOP', '#44', '<factor>', '#45', '<term-tail>']
+
+>>-  93  -<<
+Stack ::==> ['MULOP', '#44', '<factor>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped MULOP with token MULOP -> * MATCH *   {consume tokens}
+
+>>-  94  -<<
+Stack ::==> ['#44', '<factor>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 44 TOKEN MULOP
+
+>>-  95  -<<
+Stack ::==> ['<factor>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  96  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  97  -<<
+Stack ::==> ['#46', '<factor-tail>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  98  -<<
+Stack ::==> ['<factor-tail>', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token END -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  99  -<<
+Stack ::==> ['<subscript>', '#48', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token END -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  100  -<<
+Stack ::==> ['#48', '#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  101  -<<
+Stack ::==> ['#45', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 45 TOKEN IDENTIFIER
+
+>>-  102  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token END -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  103  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token END -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  104  -<<
+Stack ::==> ['<expression-tail>', '#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token END -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  105  -<<
+Stack ::==> ['#31', '<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 31 TOKEN IDENTIFIER
+
+>>-  106  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token END -> @ EPSILON @   [ 28 ] <statement-list-tail> ::= @ EPSILON @
+
+>>-  107  -<<
+Stack ::==> ['END', '#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped END with token END -> * MATCH *   {consume tokens}
+
+>>-  108  -<<
+Stack ::==> ['#11', '<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 11 TOKEN END
+
+>>-  109  -<<
+Stack ::==> ['<sub-declarations>', '#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <sub-declarations> with token BEGIN -> @ EPSILON @   [ 16 ] <sub-declarations> ::= @ EPSILON @
+
+>>-  110  -<<
+Stack ::==> ['#56', '<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 56 TOKEN END
+
+>>-  111  -<<
+Stack ::==> ['<compound-statement>', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <compound-statement> with token BEGIN -> $ PUSH $   [ 25 ] <compound-statement> ::= ['BEGIN', '<statement-list>', 'END']
+
+>>-  112  -<<
+Stack ::==> ['BEGIN', '<statement-list>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped BEGIN with token BEGIN -> * MATCH *   {consume tokens}
+
+>>-  113  -<<
+Stack ::==> ['<statement-list>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list> with token IDENTIFIER -> $ PUSH $   [ 26 ] <statement-list> ::= ['<statement>', '<statement-list-tail>']
+
+>>-  114  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token IDENTIFIER -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  115  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token IDENTIFIER -> $ PUSH $   [ 34 ] <elementary-statement> ::= ['IDENTIFIER', '#30', '<es-tail>']
+
+>>-  116  -<<
+Stack ::==> ['IDENTIFIER', '#30', '<es-tail>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  117  -<<
+Stack ::==> ['#30', '<es-tail>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 30 TOKEN IDENTIFIER
+
+>>-  118  -<<
+Stack ::==> ['<es-tail>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <es-tail> with token ASSIGNOP -> $ PUSH $   [ 36 ] <es-tail> ::= ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31']
+
+>>-  119  -<<
+Stack ::==> ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 53 TOKEN IDENTIFIER
+
+>>-  120  -<<
+Stack ::==> ['<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token ASSIGNOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  121  -<<
+Stack ::==> ['ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped ASSIGNOP with token ASSIGNOP -> * MATCH *   {consume tokens}
+
+>>-  122  -<<
+Stack ::==> ['<expression>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token INTCONSTANT -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  123  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token INTCONSTANT -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  124  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token INTCONSTANT -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  125  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token INTCONSTANT -> $ PUSH $   [ 56 ] <factor> ::= ['<constant>', '#46']
+
+>>-  126  -<<
+Stack ::==> ['<constant>', '#46', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <constant> with token INTCONSTANT -> $ PUSH $   [ 66 ] <constant> ::= ['INTCONSTANT']
+
+>>-  127  -<<
+Stack ::==> ['INTCONSTANT', '#46', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTCONSTANT with token INTCONSTANT -> * MATCH *   {consume tokens}
+
+>>-  128  -<<
+Stack ::==> ['#46', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN INTCONSTANT
+
+>>-  129  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token SEMICOLON -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  130  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token SEMICOLON -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  131  -<<
+Stack ::==> ['<expression-tail>', '#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token SEMICOLON -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  132  -<<
+Stack ::==> ['#31', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 31 TOKEN INTCONSTANT
+
+>>-  133  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token SEMICOLON -> $ PUSH $   [ 27 ] <statement-list-tail> ::= ['SEMICOLON', '<statement>', '<statement-list-tail>']
+
+>>-  134  -<<
+Stack ::==> ['SEMICOLON', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  135  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token WHILE -> $ PUSH $   [ 31 ] <statement> ::= ['WHILE', '#24', '<expression>', '#25', 'DO', '<statement>']
+
+>>-  136  -<<
+Stack ::==> ['WHILE', '#24', '<expression>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped WHILE with token WHILE -> * MATCH *   {consume tokens}
+
+>>-  137  -<<
+Stack ::==> ['#24', '<expression>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 24 TOKEN WHILE
+
+>>-  138  -<<
+Stack ::==> ['<expression>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  139  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  140  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  141  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  142  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  143  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  144  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token RELOP -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  145  -<<
+Stack ::==> ['<subscript>', '#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token RELOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  146  -<<
+Stack ::==> ['#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  147  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token RELOP -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  148  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token RELOP -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  149  -<<
+Stack ::==> ['<expression-tail>', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token RELOP -> $ PUSH $   [ 46 ] <expression-tail> ::= ['RELOP', '#38', '<simple-expression>', '#39']
+
+>>-  150  -<<
+Stack ::==> ['RELOP', '#38', '<simple-expression>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RELOP with token RELOP -> * MATCH *   {consume tokens}
+
+>>-  151  -<<
+Stack ::==> ['#38', '<simple-expression>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 38 TOKEN RELOP
+
+>>-  152  -<<
+Stack ::==> ['<simple-expression>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token INTCONSTANT -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  153  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token INTCONSTANT -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  154  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token INTCONSTANT -> $ PUSH $   [ 56 ] <factor> ::= ['<constant>', '#46']
+
+>>-  155  -<<
+Stack ::==> ['<constant>', '#46', '<term-tail>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <constant> with token INTCONSTANT -> $ PUSH $   [ 66 ] <constant> ::= ['INTCONSTANT']
+
+>>-  156  -<<
+Stack ::==> ['INTCONSTANT', '#46', '<term-tail>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTCONSTANT with token INTCONSTANT -> * MATCH *   {consume tokens}
+
+>>-  157  -<<
+Stack ::==> ['#46', '<term-tail>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN INTCONSTANT
+
+>>-  158  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token DO -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  159  -<<
+Stack ::==> ['<simple-expression-tail>', '#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token DO -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  160  -<<
+Stack ::==> ['#39', '#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 39 TOKEN INTCONSTANT
+
+>>-  161  -<<
+Stack ::==> ['#25', 'DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 25 TOKEN INTCONSTANT
+
+>>-  162  -<<
+Stack ::==> ['DO', '<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped DO with token DO -> * MATCH *   {consume tokens}
+
+>>-  163  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token BEGIN -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  164  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token BEGIN -> $ PUSH $   [ 35 ] <elementary-statement> ::= ['<compound-statement>']
+
+>>-  165  -<<
+Stack ::==> ['<compound-statement>', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <compound-statement> with token BEGIN -> $ PUSH $   [ 25 ] <compound-statement> ::= ['BEGIN', '<statement-list>', 'END']
+
+>>-  166  -<<
+Stack ::==> ['BEGIN', '<statement-list>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped BEGIN with token BEGIN -> * MATCH *   {consume tokens}
+
+>>-  167  -<<
+Stack ::==> ['<statement-list>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list> with token IDENTIFIER -> $ PUSH $   [ 26 ] <statement-list> ::= ['<statement>', '<statement-list-tail>']
+
+>>-  168  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token IDENTIFIER -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  169  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token IDENTIFIER -> $ PUSH $   [ 34 ] <elementary-statement> ::= ['IDENTIFIER', '#30', '<es-tail>']
+
+>>-  170  -<<
+Stack ::==> ['IDENTIFIER', '#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  171  -<<
+Stack ::==> ['#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 30 TOKEN IDENTIFIER
+
+>>-  172  -<<
+Stack ::==> ['<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <es-tail> with token ASSIGNOP -> $ PUSH $   [ 36 ] <es-tail> ::= ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31']
+
+>>-  173  -<<
+Stack ::==> ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 53 TOKEN IDENTIFIER
+
+>>-  174  -<<
+Stack ::==> ['<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token ASSIGNOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  175  -<<
+Stack ::==> ['ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped ASSIGNOP with token ASSIGNOP -> * MATCH *   {consume tokens}
+
+>>-  176  -<<
+Stack ::==> ['<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  177  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  178  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  179  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  180  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  181  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  182  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token LPAREN -> $ PUSH $   [ 59 ] <factor-tail> ::= ['<actual-parameters>']
+
+>>-  183  -<<
+Stack ::==> ['<actual-parameters>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <actual-parameters> with token LPAREN -> $ PUSH $   [ 61 ] <actual-parameters> ::= ['#49', 'LPAREN', '<expression-list>', 'RPAREN', '#50']
+
+>>-  184  -<<
+Stack ::==> ['#49', 'LPAREN', '<expression-list>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 49 TOKEN IDENTIFIER
+
+>>-  185  -<<
+Stack ::==> ['LPAREN', '<expression-list>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped LPAREN with token LPAREN -> * MATCH *   {consume tokens}
+
+>>-  186  -<<
+Stack ::==> ['<expression-list>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-list> with token IDENTIFIER -> $ PUSH $   [ 42 ] <expression-list> ::= ['<expression>', '#37', '<expression-list-tail>']
+
+>>-  187  -<<
+Stack ::==> ['<expression>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  188  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  189  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  190  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  191  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  192  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  193  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token RPAREN -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  194  -<<
+Stack ::==> ['<subscript>', '#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token RPAREN -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  195  -<<
+Stack ::==> ['#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  196  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token RPAREN -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  197  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token RPAREN -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  198  -<<
+Stack ::==> ['<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token RPAREN -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  199  -<<
+Stack ::==> ['#37', '<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 37 TOKEN IDENTIFIER
+
+>>-  200  -<<
+Stack ::==> ['<expression-list-tail>', 'RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-list-tail> with token RPAREN -> @ EPSILON @   [ 44 ] <expression-list-tail> ::= @ EPSILON @
+
+>>-  201  -<<
+Stack ::==> ['RPAREN', '#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RPAREN with token RPAREN -> * MATCH *   {consume tokens}
+
+>>-  202  -<<
+Stack ::==> ['#50', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 50 TOKEN RPAREN
+
+>>-  203  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token SEMICOLON -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  204  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token SEMICOLON -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  205  -<<
+Stack ::==> ['<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token SEMICOLON -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  206  -<<
+Stack ::==> ['#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 31 TOKEN RPAREN
+
+>>-  207  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token SEMICOLON -> $ PUSH $   [ 27 ] <statement-list-tail> ::= ['SEMICOLON', '<statement>', '<statement-list-tail>']
+
+>>-  208  -<<
+Stack ::==> ['SEMICOLON', '<statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  209  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token IDENTIFIER -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  210  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token IDENTIFIER -> $ PUSH $   [ 34 ] <elementary-statement> ::= ['IDENTIFIER', '#30', '<es-tail>']
+
+>>-  211  -<<
+Stack ::==> ['IDENTIFIER', '#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  212  -<<
+Stack ::==> ['#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 30 TOKEN IDENTIFIER
+
+>>-  213  -<<
+Stack ::==> ['<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <es-tail> with token LPAREN -> $ PUSH $   [ 37 ] <es-tail> ::= ['#54', '<parameters>']
+
+>>-  214  -<<
+Stack ::==> ['#54', '<parameters>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 54 TOKEN IDENTIFIER
+
+>>-  215  -<<
+Stack ::==> ['<parameters>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <parameters> with token LPAREN -> $ PUSH $   [ 40 ] <parameters> ::= ['#35', 'LPAREN', '<expression-list>', 'RPAREN', '#51']
+
+>>-  216  -<<
+Stack ::==> ['#35', 'LPAREN', '<expression-list>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 35 TOKEN IDENTIFIER
+
+>>-  217  -<<
+Stack ::==> ['LPAREN', '<expression-list>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped LPAREN with token LPAREN -> * MATCH *   {consume tokens}
+
+>>-  218  -<<
+Stack ::==> ['<expression-list>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-list> with token IDENTIFIER -> $ PUSH $   [ 42 ] <expression-list> ::= ['<expression>', '#37', '<expression-list-tail>']
+
+>>-  219  -<<
+Stack ::==> ['<expression>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  220  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  221  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  222  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  223  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  224  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  225  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token RPAREN -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  226  -<<
+Stack ::==> ['<subscript>', '#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token RPAREN -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  227  -<<
+Stack ::==> ['#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  228  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token RPAREN -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  229  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token RPAREN -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  230  -<<
+Stack ::==> ['<expression-tail>', '#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token RPAREN -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  231  -<<
+Stack ::==> ['#37', '<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 37 TOKEN IDENTIFIER
+
+>>-  232  -<<
+Stack ::==> ['<expression-list-tail>', 'RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-list-tail> with token RPAREN -> @ EPSILON @   [ 44 ] <expression-list-tail> ::= @ EPSILON @
+
+>>-  233  -<<
+Stack ::==> ['RPAREN', '#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped RPAREN with token RPAREN -> * MATCH *   {consume tokens}
+
+>>-  234  -<<
+Stack ::==> ['#51', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 51 TOKEN RPAREN
+
+>>-  235  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token SEMICOLON -> $ PUSH $   [ 27 ] <statement-list-tail> ::= ['SEMICOLON', '<statement>', '<statement-list-tail>']
+
+>>-  236  -<<
+Stack ::==> ['SEMICOLON', '<statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped SEMICOLON with token SEMICOLON -> * MATCH *   {consume tokens}
+
+>>-  237  -<<
+Stack ::==> ['<statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement> with token IDENTIFIER -> $ PUSH $   [ 29 ] <statement> ::= ['<elementary-statement>']
+
+>>-  238  -<<
+Stack ::==> ['<elementary-statement>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <elementary-statement> with token IDENTIFIER -> $ PUSH $   [ 34 ] <elementary-statement> ::= ['IDENTIFIER', '#30', '<es-tail>']
+
+>>-  239  -<<
+Stack ::==> ['IDENTIFIER', '#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  240  -<<
+Stack ::==> ['#30', '<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 30 TOKEN IDENTIFIER
+
+>>-  241  -<<
+Stack ::==> ['<es-tail>', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <es-tail> with token ASSIGNOP -> $ PUSH $   [ 36 ] <es-tail> ::= ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31']
+
+>>-  242  -<<
+Stack ::==> ['#53', '<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 53 TOKEN IDENTIFIER
+
+>>-  243  -<<
+Stack ::==> ['<subscript>', 'ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token ASSIGNOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  244  -<<
+Stack ::==> ['ASSIGNOP', '<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped ASSIGNOP with token ASSIGNOP -> * MATCH *   {consume tokens}
+
+>>-  245  -<<
+Stack ::==> ['<expression>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression> with token IDENTIFIER -> $ PUSH $   [ 45 ] <expression> ::= ['<simple-expression>', '<expression-tail>']
+
+>>-  246  -<<
+Stack ::==> ['<simple-expression>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression> with token IDENTIFIER -> $ PUSH $   [ 48 ] <simple-expression> ::= ['<term>', '<simple-expression-tail>']
+
+>>-  247  -<<
+Stack ::==> ['<term>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token IDENTIFIER -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  248  -<<
+Stack ::==> ['<factor>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token IDENTIFIER -> $ PUSH $   [ 55 ] <factor> ::= ['IDENTIFIER', '#46', '<factor-tail>']
+
+>>-  249  -<<
+Stack ::==> ['IDENTIFIER', '#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped IDENTIFIER with token IDENTIFIER -> * MATCH *   {consume tokens}
+
+>>-  250  -<<
+Stack ::==> ['#46', '<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN IDENTIFIER
+
+>>-  251  -<<
+Stack ::==> ['<factor-tail>', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor-tail> with token ADDOP -> $ PUSH $   [ 60 ] <factor-tail> ::= ['<subscript>', '#48']
+
+>>-  252  -<<
+Stack ::==> ['<subscript>', '#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <subscript> with token ADDOP -> @ EPSILON @   [ 39 ] <subscript> ::= @ EPSILON @
+
+>>-  253  -<<
+Stack ::==> ['#48', '<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 48 TOKEN IDENTIFIER
+
+>>-  254  -<<
+Stack ::==> ['<term-tail>', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token ADDOP -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  255  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token ADDOP -> $ PUSH $   [ 50 ] <simple-expression-tail> ::= ['ADDOP', '#42', '<term>', '#43', '<simple-expression-tail>']
+
+>>-  256  -<<
+Stack ::==> ['ADDOP', '#42', '<term>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped ADDOP with token ADDOP -> * MATCH *   {consume tokens}
+
+>>-  257  -<<
+Stack ::==> ['#42', '<term>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 42 TOKEN ADDOP
+
+>>-  258  -<<
+Stack ::==> ['<term>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term> with token INTCONSTANT -> $ PUSH $   [ 52 ] <term> ::= ['<factor>', '<term-tail>']
+
+>>-  259  -<<
+Stack ::==> ['<factor>', '<term-tail>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <factor> with token INTCONSTANT -> $ PUSH $   [ 56 ] <factor> ::= ['<constant>', '#46']
+
+>>-  260  -<<
+Stack ::==> ['<constant>', '#46', '<term-tail>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <constant> with token INTCONSTANT -> $ PUSH $   [ 66 ] <constant> ::= ['INTCONSTANT']
+
+>>-  261  -<<
+Stack ::==> ['INTCONSTANT', '#46', '<term-tail>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped INTCONSTANT with token INTCONSTANT -> * MATCH *   {consume tokens}
+
+>>-  262  -<<
+Stack ::==> ['#46', '<term-tail>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 46 TOKEN INTCONSTANT
+
+>>-  263  -<<
+Stack ::==> ['<term-tail>', '#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <term-tail> with token END -> @ EPSILON @   [ 54 ] <term-tail> ::= @ EPSILON @
+
+>>-  264  -<<
+Stack ::==> ['#43', '<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 43 TOKEN INTCONSTANT
+
+>>-  265  -<<
+Stack ::==> ['<simple-expression-tail>', '<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <simple-expression-tail> with token END -> @ EPSILON @   [ 51 ] <simple-expression-tail> ::= @ EPSILON @
+
+>>-  266  -<<
+Stack ::==> ['<expression-tail>', '#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <expression-tail> with token END -> @ EPSILON @   [ 47 ] <expression-tail> ::= @ EPSILON @
+
+>>-  267  -<<
+Stack ::==> ['#31', '<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 31 TOKEN INTCONSTANT
+
+>>-  268  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token END -> @ EPSILON @   [ 28 ] <statement-list-tail> ::= @ EPSILON @
+
+>>-  269  -<<
+Stack ::==> ['END', '<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped END with token END -> * MATCH *   {consume tokens}
+
+>>-  270  -<<
+Stack ::==> ['<statement-list-tail>', 'END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped <statement-list-tail> with token END -> @ EPSILON @   [ 28 ] <statement-list-tail> ::= @ EPSILON @
+
+>>-  271  -<<
+Stack ::==> ['END', '#55', 'ENDMARKER', 'ENDOFFILE']
+Popped END with token END -> * MATCH *   {consume tokens}
+
+>>-  272  -<<
+Stack ::==> ['#55', 'ENDMARKER', 'ENDOFFILE']
+ACTION TIME BABY
+Action number invalid or currently not supported.
+ACTION 55 TOKEN END
+
+>>-  273  -<<
+Stack ::==> ['ENDMARKER', 'ENDOFFILE']
+Popped ENDMARKER with token ENDMARKER -> * MATCH *   {consume tokens}
+
+>>-  274  -<<
+Stack ::==> ['ENDOFFILE']
+Popped ENDOFFILE with token ENDOFFILE -> * MATCH *   {consume tokens}
+
+! ACCEPT !
