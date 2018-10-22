@@ -44,6 +44,8 @@ TODO:
 - actions 9 [sorta]
 - actions 3 [lol]
 
+- fix symbol table class to have reserved boolean (or maybe boolean for all and then override
+  the booleans during subclass initialization
 - how to pass line number to semantic action error
 - using numbers in variable name ideal?
 - should we really import everything from symbol table?
@@ -51,3 +53,4 @@ TODO:
 - test.py where major parts are initialized and what not
 - should parser notice user of semantic action in debug mode?
 - stack class replace the stack in parser
+
