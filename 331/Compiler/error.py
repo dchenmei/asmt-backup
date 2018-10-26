@@ -14,13 +14,13 @@ class LexerError(CompilerError):
         super().__init__("Lexical Error: " + message + " at line " + str(line) + ", character " + str(character))
 
 class ParserError(CompilerError):
-    def __init__(self, message, line, character):
-        super().__init__("Parser Error: " + message + " at line " + str(line) + ", character " + str(character))
+    def __init__(self, message, line):
+        super().__init__("Parser Error: " + message + " at line " + str(line))
 
 class SymbolTableError(CompilerError):
     def __init__(self, message):
         super().__init__("Symbol Table Error: " + message)
 
 class SemanticActionError(CompilerError):
-    def __init__(self, message, line, character):
-        super().__init__("Semantic Action Error: " + message + " at line " + str(line) + ", character " + str(character))
+    def __init__(self, message, line):
+        super().__init__("Semantic Action Error: " + message + " at line " + str(line))

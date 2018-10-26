@@ -1,7 +1,7 @@
 from lexer import Lexer
 from grammar import Grammar
 from semantic_action import SemanticAction
-from error import CompilerError
+from error import ParserError
 
 class Parser:
     def __init__(self, lexer, grammar):
@@ -42,10 +42,7 @@ class Parser:
             elif self.grammar.is_non_term(self.top):
                 self.non_terminal(self.token, self.top, debug)
             elif self.grammar.is_action(self.top):
-                print("ACTION TIME BABY")
-                # [1:] ignores pound sign but gets rest of the number
-                self.sem_action.execute(int(self.top[1:]), self.prev_token)
-                self.pop_stack()
+                self.action(self.top, debug)
             else:
                 self.no_match_error(self.token, self.top, self.token.line())
 
@@ -74,16 +71,29 @@ class Parser:
         self.pop_stack()
 
         # anticipate production, ignore if epsilon
-        prod = self.grammar.prod(prod_num)
-        if prod_num > 0:
+        prod = self.grammar.prod(abs(prod_num)) # absolute here to include semantic actions
+        appended = False
+        if prod_num > 0 or len(prod) > 0:
             for unit in reversed(prod):
                 if unit is not '': # catches epsilon production that have positive number on the table
                     self.append_stack(unit)
+                    appended = True
 
-        if debug and prod_num > 0:
-            print(" -> $ PUSH $  ", "[", prod_num, "]", top, "::=", prod)
+        if debug and prod_num > 0 or appended:
+            print(" -> $ PUSH $  ", "[", abs(prod_num), "]", top, "::=", prod)
         else:
             print(" -> @ EPSILON @  ", "[", abs(prod_num), "]", top, "::= @ EPSILON @")
+
+    def action(self, top, debug = 0):
+        # [1:] ignores pound sign but gets rest of the number
+        action_num = int(top[1:])
+
+        if debug:
+            print("Popped", top, "with token", self.token.type(),
+                  "-> # SEMANTIC ACTION #   [", action_num, "]")
+
+        self.sem_action.execute(action_num, self.prev_token)
+        self.pop_stack()
 
     def no_match_error(self, token, top, line):
         if token.value():
@@ -91,13 +101,13 @@ class Parser:
         else:
             val = ""
 
-        raise CompilerError("Expected " + top.lower() + " before " + token.type().lower() + ": " + val + " on line " + str(line))
+        raise ParserError("Expected " + top.lower() + " before " + token.type().lower() + ": " + val, line)
 
     def production_error(self, token, top):
-        raise CompilerError("Expected type " + top.lower() + " but provided '" + token.type().lower() +  "' on line " + str(token.line()))
+        raise ParserError("Expected type " + top.lower() + " but provided " + token.type().lower(), token.line())
 
 if __name__ == '__main__':
-    lexer = Lexer('test_program.txt')
+    lexer = Lexer('sem_one_test.txt')
     grammar = Grammar("augmented_grammar.txt", "table.txt")
     parser = Parser(lexer, grammar)
     parser.parse(1)

@@ -32,6 +32,9 @@ class SymbolTable:
             print(key, self.hashtable[key])
 
 class SymbolTableEntry:
+    def __init__(self):
+        self.reserved = False
+
     def isVariable(self):
         return False
     def isProcedure(self):
@@ -45,7 +48,7 @@ class SymbolTableEntry:
     def isArray(self):
         return False
     def isReserved(self):
-        return False
+        return self.reserved
 
 class ArrayEntry(SymbolTableEntry):
     def __init__(self, name, address, type, upper_bound, lower_bound):
@@ -95,6 +98,7 @@ class IODeviceEntry(SymbolTableEntry):
     def __init__(self, name):
         self.name = name
 
+'''
 if __name__ == '__main__':
     capacity = 6
     table = SymbolTable(capacity)
@@ -117,3 +121,4 @@ if __name__ == '__main__':
     print()
 
     table.dump()
+'''

@@ -1,0 +1,14 @@
+{ A simple.vas that encounters every action in part I at least once }
+
+program simple (input, output);
+var a : integer;
+    b : real;
+	c : real;
+    x : array [0..10] of integer;
+    y : array [0..5] of real;
+begin
+  a := 1001;
+  b := 10.00000;
+  c := a + b; { not sure if this is proper }
+  write(c)
+end.
