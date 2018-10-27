@@ -1,6 +1,27 @@
 from symbol_table import *
 from error import SemanticActionError
 
+# TODO: should helper functions be part of the class, probably, we will see
+# put in self as part of the parameters if they are going into the class!!!!
+def type_check(x, y):
+    # Implemention is concise, chart for reference
+    # int int   -> 0
+    # real real -> 1
+    # real int  -> 2
+    # int real  -> 3
+    if x == y:
+        return int(x == "REAL") # TODO: will they be passed in as "INTEGER" or "int"
+    else:
+        return int(y == "REAL") + 2
+
+def create(name, type):
+    print("")
+
+# not using *args, because that is overkill
+# TODO: how do the arguments work?
+def generate():
+
+
 class SemanticAction:
     def __init__(self):
         self.stack = []
