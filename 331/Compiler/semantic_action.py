@@ -1,4 +1,5 @@
 from symbol_table import *
+from quadruples import Quadruples
 from error import SemanticActionError
 
 # TODO: should helper functions be part of the class, probably, we will see
@@ -14,14 +15,6 @@ def type_check(x, y):
     else:
         return int(y == "REAL") + 2
 
-def create(name, type):
-    print("")
-
-# not using *args, because that is overkill
-# TODO: how do the arguments work?
-def generate():
-
-
 class SemanticAction:
     def __init__(self):
         self.stack = []
@@ -31,10 +24,78 @@ class SemanticAction:
         self.is_array = False # True = array, False = simple variable
         self.global_mem = 0
         self.local_mem = 0
+        self.global_store = 0
+        self.tmp_id = 0 # id for temporary variable generated with create()
+        self.quads = Quadruples()
 
         # TODO: more specific capacity later, if needed
         self.local_table = SymbolTable(100000)
+        self.constant_table = SymbolTable(100000)
         self.global_table = SymbolTable(100000)
+
+    def get_entry_prefix(self, entry):
+        addr = entry.address
+
+        # is vs == ?
+        #  maybe we shouldnt touch member variables lke this
+        # maybe it can be negative and end up in global like a global temp
+        if addr > 0 or self.local_table.find(entry.name) is None: # global
+            return "_"
+        else: # local
+            return "%"
+
+    def get_entry_addr(self, entry):
+        # TODO: refactor to not use camel case please
+        if entry.isVariable() or entry.isArray():
+            return entry.address
+        else: # assume  is constant, there is no isConstant function?
+            tmp = self.create("tmp", entry.type)
+            generate("move", entry.name, tmp)
+            return tmp.address
+
+    # not using *args, because that is overkill
+    # what kind of args come in here, id or addresses
+    def generate(self, op, id1=None, id2=None, id3=None):
+        quad = op
+
+        if id1:
+            quad += " " + self.get_entry_prefix(id1) + str(self.get_entry_addr(id1))
+        if id2:
+            quad += ", " + self.get_entry_prefix(id2) + self.get_entry_addr(id2)
+        if id3:
+            quad += ", " + self.get_entry_prefix(id3) + self.get_entry_addr(id3)
+        if id4:
+            quad += ", " + self.get_entry_prefix(id4) + self.get_entry_addr(id4)
+
+        self.quads.add_quad(quad)
+
+    def create(self, name, type):
+        # TODO: do we need to append the id here too?
+        ve = VariableEntry(name, 0, type)
+
+        # temporary variable, -1 to distinguish (what if it ends up in the global table, SMELLS LIKE A BUG)
+        if self.global_env:
+            ve.address = -1 * self.global_mem
+            self.global_mem += 1
+            self.global_table.insert(name + str(self.tmp_id), ve) # append id to make each tmp unique
+        else:
+            ve.address = -1 * self.local_mem
+            self.local_mem += 1
+            self.local_table.insert(name + str(self.tmp_id), ve)
+
+        tmp_id += 1
+        return ve
+
+    def backpatch(self, quad_idx, x):
+        self.quads.set_field(quad_idx, 1, x) # assume the quadruples are 0 indexed so 2nd is index 1
+
+    # TODO: we need to clarify what is passed where because there is a heap of confusion here
+    def lookup(self, id):
+        entry = self.local_table.find(id.value())
+        if not entry:
+            entry = self.global_table.find(id.value())
+
+        return entry
 
     def execute(self, action_num, token):
         if action_num == 1:
@@ -53,6 +114,19 @@ class SemanticAction:
             self.action_9()
         elif action_num == 13:
             self.action_13(token)
+        elif action_num == 30:
+            id = self.lookup(token)
+            if not id:
+                raise SemanticActionError("undeclared variable", token.line())
+            self.stack.append(id)
+        #elif action_num == 55:
+            #self.backpatch(self.global_store, self.global_mem)
+            #self.generate("free", self.global_mem)
+            #self.generate("procend")
+       # elif action_num == 56:
+            # self.generate("procbegin", "main")
+            # self.global_store = self.quads.get_next_quad()
+            # self.generate("alloc", "_")
         else:
             # TODO: in the future, when valid numbers are implemented, raise error
             print("Action number invalid or currently not supported.")
@@ -73,7 +147,7 @@ class SemanticAction:
                     self.global_table.insert(tok.value(), id)
                     self.global_mem += mem_size
                 else:
-                    id.address = self.local_mem
+                    id.address = -1 * self.local_mem # negative to distinguish from global entries
                     self.local_table.insert(tok.value(), id)
                     self.local_mem += mem_size
         else:
@@ -128,6 +202,10 @@ class SemanticAction:
         self.global_table.insert(id3.value(), procedure_entry)
 
         self.insert = False
+
+        # TODO: Generate doesn't quite work as expected
+        #self.generate("call", "main", "0")
+        #self.generate("exit")
 
     def action_13(self, token):
         if token.type() == "IDENTIFIER":

@@ -40,7 +40,3 @@ class Quadruples:
                 out += ", " + quad[3]
 
             print(out)
-
-if __name__ == "__main__":
-    print("HIHIHIHIGH")
-    quads = Quadruples()

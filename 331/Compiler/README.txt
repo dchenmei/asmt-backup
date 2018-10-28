@@ -41,6 +41,8 @@ Issues and Notes
 * No actual quadruple class is created, as there is no need. A list of string is assumed to be a quadruple, each storing up to four things
 * Some things are different than the example of Quadruples in Java. Instead of using a vector, a normal list will suffice and does the same thing. Also for the print, the a string is built first which is a little less complicated.
 * Counting from 1 is a little uneasy for quadruple
+* Decide to make the address of local memory negative for easier distinguishing
+* These auxiliary functions / helpers have to be inside semantic action because they have states, not stateless, maybe only for some
 
 Changelog
 -----------------------
@@ -49,12 +51,15 @@ TODO:
 Class: Quadruple [ok]
 Class: Quadruples [ok]
 Function: Typecheck() [ok]
-Function: Create()
-Function: GetTempVar()
-Function: Gen()
+Function: Create() [ok]
+Function: GetTempVar() [maybe to avoid bugs?]
+Function: Gen() [done]
 Insert reserved words (main, something with in and out)
 Update 3 [local memory already handled]
 Update 9
-Function Backpatch
+Function Backpatch [ok]
 Variable: GlobalStore and LocalStore
 New Routines
+
+55 [ok]
+56 [ok]
