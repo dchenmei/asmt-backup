@@ -4,12 +4,16 @@ from error import SemanticActionError
 
 # TODO: should helper functions be part of the class, probably, we will see
 # put in self as part of the parameters if they are going into the class!!!!
+# these are identifiers folk, don't be fooled
 def type_check(x, y):
     # Implemention is concise, chart for reference
     # int int   -> 0
     # real real -> 1
     # real int  -> 2
     # int real  -> 3
+    # TODO: can we nicely assume that the only two possible type passed in here are int and real
+    x = x.type()
+    y = y.type()
     if x == y:
         return int(x == "REAL") # TODO: will they be passed in as "INTEGER" or "int"
     else:
@@ -33,6 +37,19 @@ class SemanticAction:
         self.constant_table = SymbolTable(100000)
         self.global_table = SymbolTable(100000)
 
+        # reserved words: MAIN, READ, WRITE
+        main = ProcedureEntry("MAIN", 0, None)
+        read = ProcedureEntry("READ", 0, None)
+        write = ProcedureEntry("WRITE", 0, None)
+
+        main.reserved = True
+        read.reserved = True
+        write.reserved = True
+
+        self.global_table.insert(main.name, main)
+        self.global_table.insert(read.name, read)
+        self.global_table.insert(write.name, write)
+
     def get_entry_prefix(self, entry):
         addr = entry.address
 
@@ -55,17 +72,34 @@ class SemanticAction:
 
     # not using *args, because that is overkill
     # what kind of args come in here, id or addresses
+    # just to clarify, what is passed here are entry types
+    # what is passed in here is very ambiguous, it can be an entry but sometimes string or #s
     def generate(self, op, id1=None, id2=None, id3=None):
-        quad = op
+        # TODO: most likely a better idea if we write an overriden function but this will do for now
 
-        if id1:
-            quad += " " + self.get_entry_prefix(id1) + str(self.get_entry_addr(id1))
-        if id2:
-            quad += ", " + self.get_entry_prefix(id2) + self.get_entry_addr(id2)
-        if id3:
-            quad += ", " + self.get_entry_prefix(id3) + self.get_entry_addr(id3)
-        if id4:
-            quad += ", " + self.get_entry_prefix(id4) + self.get_entry_addr(id4)
+        quad = []
+        quad.append(op)
+
+        if type(id1) is str or type(id1) is int:
+            quad.append(str(id1))
+        elif id1:
+            quad.append(self.get_entry_prefix(id1) + str(self.get_entry_addr(id1)))
+        else:
+            quad.append(id1) # append None
+
+        if type(id2) is str or type(id2) is int:
+            quad.append(str(id2))
+        elif id2:
+            quad.append(self.get_entry_prefix(id2) + self.get_entry_addr(id2))
+        else:
+            quad.append(id2) # append None
+
+        if type(id3) is str or type(id3) is int:
+            quad.append(str(id3))
+        elif id3:
+            quad.append(self.get_entry_prefix(id3) + self.get_entry_addr(id3))
+        else:
+            quad.append(id3) # append None
 
         self.quads.add_quad(quad)
 
@@ -119,14 +153,33 @@ class SemanticAction:
             if not id:
                 raise SemanticActionError("undeclared variable", token.line())
             self.stack.append(id)
-        #elif action_num == 55:
-            #self.backpatch(self.global_store, self.global_mem)
-            #self.generate("free", self.global_mem)
-            #self.generate("procend")
-       # elif action_num == 56:
-            # self.generate("procbegin", "main")
-            # self.global_store = self.quads.get_next_quad()
-            # self.generate("alloc", "_")
+        elif action_num == 31:
+            self.action_31(token) # Don't think we need to pass in a token
+        elif action_num == 40:
+            if token.type() != "UNARYPLUS" and token.type() != "UNARYMINUS":
+                raise SemanticActionError("expected uplus or uminus", token.line())
+
+            self.stack.append(token)
+        elif action_num == 42:
+            # oh jeez, so hackish
+            if token.type()[-2:] != "OP":
+                raise SemanticActionError("expected an operator", token.line())
+
+            self.stack.append(token)
+        elif action_num == 44:
+            # oh jeez, so hackish
+            if token.type()[-2:] != "OP":
+                raise SemanticActionError("expected an operator", token.line())
+
+            self.stack.append(token)
+        elif action_num == 55:
+            self.backpatch(self.global_store, self.global_mem)
+            self.generate("free", self.global_mem)
+            self.generate("procend")
+        elif action_num == 56:
+             self.generate("procbegin", "main")
+             self.global_store = self.quads.get_next_quad()
+             self.generate("alloc", "_")
         else:
             # TODO: in the future, when valid numbers are implemented, raise error
             print("Action number invalid or currently not supported.")
@@ -203,9 +256,8 @@ class SemanticAction:
 
         self.insert = False
 
-        # TODO: Generate doesn't quite work as expected
-        #self.generate("call", "main", "0")
-        #self.generate("exit")
+        self.generate("call", "main", "0")
+        self.generate("exit")
 
     def action_13(self, token):
         if token.type() == "IDENTIFIER":
@@ -213,11 +265,25 @@ class SemanticAction:
         else:
             raise SemanticActionError("expected identifier", token.line())
 
+    def action_31(self, token):
+        self.dump()
+        # TODO: make sure you check for empty list errors when popping anything
+        # these are all entry types
+        id2 = self.stack.pop()
+        offset = None
+        id1 = self.stack.pop()
+
+        if typecheck(id1, id2) == 3:
+            raise SemanticActionError("type mismatch", token.line()) # which line should we use?
+        if typecheck(id1, id2) == 2:
+            tmp = self.create("tmp", id1.type()) # id1 is a real here?
+
     def dump(self):
         out = "Stack ::==>"
         if len(self.stack) == 0:
             print(out)
 
+        # TODO: Stack has token and entries???
         for token in list(reversed(self.stack)):
             out += " " + token.str() + ","
 

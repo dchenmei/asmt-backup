@@ -21,7 +21,7 @@ class Quadruples:
         return self.quads[idx]
 
     def add_quad(self, quad):
-        quads.insert(next_quad, quad) # TODO, don't we just append it to the end ...
+        self.quads.insert(self.next_quad, quad) # TODO, don't we just append it to the end ...
         self.next_quad += 1 # TODO, why don't we use increment_quad, HMMMM
 
     def print(self):
