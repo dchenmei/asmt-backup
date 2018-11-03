@@ -1,6 +1,6 @@
 from lexer import Lexer
 from grammar import Grammar
-from semantic_action import SemanticAction
+from sem_two import SemanticAction
 from error import ParserError
 
 class Parser:
@@ -51,6 +51,8 @@ class Parser:
                 print()
 
         print("! ACCEPT !")
+        print()
+        self.sem_action.dump_tvi()
 
     def match(self, debug = 0):
         if debug:
@@ -105,9 +107,3 @@ class Parser:
 
     def production_error(self, token, top):
         raise ParserError("Expected type " + top.lower() + " but provided " + token.type().lower(), token.line())
-
-if __name__ == '__main__':
-    lexer = Lexer('sem_one_test.txt')
-    grammar = Grammar("augmented_grammar.txt", "table.txt")
-    parser = Parser(lexer, grammar)
-    parser.parse(1)

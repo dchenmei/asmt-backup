@@ -1,0 +1,30 @@
+program SemTwoTest (input, output);
+
+ var a, b, c : real;
+           i : integer;
+         arr : array [0..10] of real;
+ begin
+   a := 3.14;
+   b := 1.23;
+   c := 6.66;
+   i := 999;
+
+   { Bad Code }
+   { i := 1.00; }
+   { i := a + b; }
+   { c := k / i; }
+   { i := a * i; }
+   { a := z + 1; }
+   { i := i + 1.00; }
+   { i := a DIV i; }
+   { a := a MOD b; }
+
+   a := b - 4;
+   i := 1 - 10 + i;
+   b := i - b;
+   b := a * b * c;
+   c := b * (a + b) / c;
+   a := b + (i * 2) + c;
+   a := i MOD i
+ end.
+ 

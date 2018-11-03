@@ -1,6 +1,6 @@
 class Quadruples:
     def __init__(self):
-        # list of quadruple (each represented by list of string of *maximum* length 4)
+        # list of quadruples, each represented by list of four string
         # the default element is placeholder, because we are counting from 1...
         self.quads = [[None, None, None, None]]
         self.next_quad = 1
@@ -21,8 +21,8 @@ class Quadruples:
         return self.quads[idx]
 
     def add_quad(self, quad):
-        self.quads.insert(self.next_quad, quad) # TODO, don't we just append it to the end ...
-        self.next_quad += 1 # TODO, why don't we use increment_quad, HMMMM
+        self.quads.insert(self.next_quad, quad)
+        self.increment_quad()
 
     def print(self):
         print("CODE")
@@ -31,12 +31,11 @@ class Quadruples:
             quad = self.quads[i]
             out = str(i) + ": " + quad[0]
 
-            # TODO: is it okay to assume, that four will values will always be set counting nulls?
             if quad[1]:
-                out += " " + quad[1]
+                out += " " + str(quad[1])
             if quad[2]:
-                out += ", " + quad[2]
+                out += ", " + str(quad[2])
             if quad[3]:
-                out += ", " + quad[3]
+                out += ", " + str(quad[3])
 
             print(out)

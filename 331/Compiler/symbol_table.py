@@ -35,19 +35,19 @@ class SymbolTableEntry:
     def __init__(self):
         self.reserved = False
 
-    def isVariable(self):
+    def is_variable(self):
         return False
-    def isProcedure(self):
+    def is_procedure(self):
         return False
-    def isFunction(self):
+    def is_function(self):
         return False
-    def isFunctionResult(self):
+    def is_functionResult(self):
         return False
-    def isParameter(self):
+    def is_parameter(self):
         return False
-    def isArray(self):
+    def is_array(self):
         return False
-    def isReserved(self):
+    def is_reserved(self):
         return self.reserved
 
 class ArrayEntry(SymbolTableEntry):
@@ -58,13 +58,16 @@ class ArrayEntry(SymbolTableEntry):
         self.upper_bound = upper_bound
         self.lower_bound = lower_bound
 
-    def isArray(self):
+    def is_array(self):
         return True
 
 class ConstantEntry(SymbolTableEntry):
     def __init__(self, name, type):
         self.name = name
         self.type = type
+
+    def is_constant(self):
+        return True
 
 class FunctionEntry(SymbolTableEntry):
     def __init__(self, name, num_params, param_info, result):
@@ -73,7 +76,7 @@ class FunctionEntry(SymbolTableEntry):
         self.param_info = param_info
         self.result = result
 
-    def isFunction(self):
+    def is_function(self):
         return True
 
 class ProcedureEntry(SymbolTableEntry):
@@ -82,7 +85,7 @@ class ProcedureEntry(SymbolTableEntry):
         self.num_params = num_params
         self.param_info =  param_info
 
-    def isProcedure(self):
+    def is_procedure(self):
         return True
 
 class VariableEntry(SymbolTableEntry):
@@ -91,34 +94,9 @@ class VariableEntry(SymbolTableEntry):
         self.address = address
         self.type = type
 
-    def isVariable(self):
+    def is_variable(self):
         return True
 
 class IODeviceEntry(SymbolTableEntry):
     def __init__(self, name):
         self.name = name
-
-'''
-if __name__ == '__main__':
-    capacity = 6
-    table = SymbolTable(capacity)
-
-    # Below examples are imaginary and does not correspond to Vascal and meant for testing the class itself
-    table.insert("foo", VariableEntry("foo", 123, "string"))
-    table.insert("bar", VariableEntry("bar", 321, "string"))
-    table.insert("add", FunctionEntry("add", 2, {"int", "int"}, None))
-    table.insert("grades", ArrayEntry("grades", 888, "int", 111, 000))
-    table.insert("balance", ConstantEntry("balance", "float"))
-
-    # uncomment following lines to trigger duplicate error and full table error
-    #table.insert("foo", ArrayEntry("foo", 100, "int", 444, 333))
-    #table.insert("Hello", IODeviceEntry("file"))
-
-    print("Find:")
-    print(table.find("foo"))
-    print(table.find("grades"))
-    print(table.find("underwater basket weaving"))
-    print()
-
-    table.dump()
-'''

@@ -9,7 +9,9 @@ Implementation for semantic actions #31, #40, #41, #42, #43, #44, #45, #46, #48,
 Files
 -----------------------
 ~ new ~
-semantic_action.py (updated)
+compiler.py (where code is ran)
+sem_two.py 
+phase_2.vas
 quadruples.py
 README.txt (this file)
 
@@ -28,48 +30,48 @@ PARSE_README..txt
 symbol_table.py
 SYMTAB_README.txt
 augmented_grammar.txt
+sem_one.py (renamed)
 SEM1_README.txt
 
 Usage
 -----------------------
 1. Open code in PyCharm (Python 3.5 or above, may not be compatible with Python 2.x.x)
-2. Run parser.py (where __main__ is located)
-3. (Testing) modify sem_two_test.txt
+2. Run compiler.py
+3. (Testing) modify phase_2.vas
+4. (Testing) tvi is printed after parser output
 
 Issues and Notes
 -----------------------
-* No actual quadruple class is created, as there is no need. A list of string is assumed to be a quadruple, each storing up to four things
-* Some things are different than the example of Quadruples in Java. Instead of using a vector, a normal list will suffice and does the same thing. Also for the print, the a string is built first which is a little less complicated.
-* Counting from 1 is a little uneasy for quadruple
-* Decide to make the address of local memory negative for easier distinguishing
-* These auxiliary functions / helpers have to be inside semantic action because they have states, not stateless, maybe only for some
+* Helper functions are inside the semantic action because they have states and will not work otherwise. The only exception is the type check method but it is not used outside of semantic action, so it make senses to have it inside as well. 
+
+* Symbol table entries should ideally have member functions. Then the lookup method can take direct token and entries in the future. For now lookup expects strings
+
+* Addresses are printed as positive regardless of whether it is temporary on line 36 and 40
+
+* Errors like undefined variable can be more specific, like telling the user which variable is undefined
+
+* Quad uses None as placeholders for easier printing
+
+* Capacity of tables is still unknown, might not be necessary
+
+* All actions in "execute" should be done through function calls. It will only grow larger and the code within the elif is not as convenient as code inside a function
+
+* Line 157 and 164 is probably not the most elegant way to check if something is an operator
+
+* Not sure if the check the size and content of the stack should be checked popping. Right now, the program assumes nothing funny will happen
+
+* Line 350 assume only MULOPS, a more specific condition is needed
+
+* Dump is not very pretty, it outputs only the raw format of entries and tokens
 
 Changelog
 -----------------------
+* Added compiler.py to run all the code
 
-TODO:
-Class: Quadruple [ok]
-Class: Quadruples [ok]
-Function: Typecheck() [ok]
-Function: Create() [ok]
-Function: GetTempVar() [maybe to avoid bugs?]
-Function: Gen() [done]
-Insert reserved words (main, something with in and out)
-Update 3 [local memory already handled]
-Update 9
-Function Backpatch [ok]
-Variable: GlobalStore and LocalStore
-New Routines
+* is_div, is_mod and opcode methods added to Token class
 
-55 [ok]
-56 [ok]
+* Fixed bug in action 3 on line 216. Accidentally used token type instead of stack top type.
 
-30 [ok]
-40 [ok]
-42 [ok]
-44 [ok]
+* Changed the symbol table entry member functions to underscore case to avoid confusion 
 
-31
-41
-46
-48
+* Added is_constant to constant entries

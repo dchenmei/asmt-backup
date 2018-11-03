@@ -63,6 +63,29 @@ class Token:
     def line(self):
         return self.line_number
 
+    def op_code(self):
+        # DIV and MOD are handled outside of this
+        # current only support arithmetic operations
+        if self.type() == "MULOP":
+            if self.value() == 1:
+                return "mul"
+            elif self.value() == 2:
+                return "div"
+        elif self.type() == "ADDOP":
+            if self.value() == 1:
+                return "add"
+            elif self.value() == 2:
+                return "sub"
+        else:
+            print("HELLO")
+            raise LookupError
+
+    def is_div(self):
+        return self.type() == "MULOP" and self.value() == 3
+
+    def is_mod(self):
+        return self.type() == "MULOP" and self.value() == 4
+
     def str(self):
         str_tk = "['" + self.type() + "', "
         if self.value() is None:
